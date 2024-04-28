@@ -16,13 +16,13 @@
     @livewireStyles
 </head>
 
-<body class="font-sans antialiased text-black/50 dark:bg-black dark:text-white/50 bg-gray-300">
+<body class="font-sans antialiased text-black/50 dark:bg-neutral-900 dark:text-white/50 bg-neutral-100">
     <div>
         <img id="background" class="absolute -left-20 top-0 max-w-[877px]"
             src="https://laravel.com/assets/img/welcome/background.svg" alt="Background image" />
         <div
             class="relative min-h-screen flex flex-col items-center justify-center selection:bg-[#FF2D20] selection:text-white">
-            <div class="relative w-full max-w-2xl px-6 lg:max-w-7xl h-screen">
+            <div class="relative w-full max-w-2xl px-6 lg:max-w-7xl">
                 <header class="grid grid-cols-2 items-center gap-2 py-10 lg:grid-cols-3">
                     <div class="flex gap-4 lg:justify-center lg:col-start-2">
                         <svg class="h-12 w-auto text-white lg:h-16 lg:text-[#FF2D20]" viewBox="0 0 62 65" fill="none"
