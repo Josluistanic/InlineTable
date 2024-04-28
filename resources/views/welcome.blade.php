@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" x-data="{
-        darkMode: localStorage.getItem('darkMode')
-        || localStorage.setItem('darkMode', 'system')}"
-    x-init="$watch('darkMode', val => localStorage.setItem('darkMode', val))"
-    x-bind:class="{'dark': darkMode === 'dark' || (darkMode === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches)}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}"
+    x-data="{ darkMode: localStorage.getItem('darkMode') || localStorage.setItem('darkMode', 'system')}"
+    x-bind:class="{'dark': darkMode === 'dark' || (darkMode === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches)}"
+    x-init="$watch('darkMode', val => localStorage.setItem('darkMode', val))">
 
 <head>
     <meta charset="utf-8">
@@ -14,16 +13,16 @@
 
     <!-- Fonts -->
     @vite('resources/css/app.css')
-
+    @livewireStyles
 </head>
 
-<body class="font-sans antialiased dark:bg-black dark:text-white/50">
-    <div class="bg-gray-50 text-black/50 dark:bg-black dark:text-white/50">
+<body class="font-sans antialiased text-black/50 dark:bg-black dark:text-white/50 bg-gray-300">
+    <div>
         <img id="background" class="absolute -left-20 top-0 max-w-[877px]"
             src="https://laravel.com/assets/img/welcome/background.svg" alt="Background image" />
         <div
             class="relative min-h-screen flex flex-col items-center justify-center selection:bg-[#FF2D20] selection:text-white">
-            <div class="relative w-full max-w-2xl px-6 lg:max-w-7xl">
+            <div class="relative w-full max-w-2xl px-6 lg:max-w-7xl h-screen">
                 <header class="grid grid-cols-2 items-center gap-2 py-10 lg:grid-cols-3">
                     <div class="flex gap-4 lg:justify-center lg:col-start-2">
                         <svg class="h-12 w-auto text-white lg:h-16 lg:text-[#FF2D20]" viewBox="0 0 62 65" fill="none"
@@ -50,72 +49,21 @@
                             <path style="fill-rule:evenodd;fill:#fff;fill-opacity:1"
                                 d="M55.176 35.375c0 2.719-2.164 4.922-4.836 4.922s-4.836-2.203-4.836-4.922 2.164-4.922 4.836-4.922 4.836 2.203 4.836 4.922Zm0 0" />
                         </svg>
-
                     </div>
+                    <x-theme-toggle />
                 </header>
 
-                <main class="mt-6">
-                    <div x-cloak class="relative inline-flex items-center gap-2 mr-2 sm:pb-2">
+                <main class="mt-6 text-center">
 
-                        <p class="absolute w-full text-sm text-center -bottom-3 lg:-bottom-1">dark mode</p>
-
-                        {# light #}
-                        <button x-on:click="darkMode = 'light'">
-                            <svg xmlns="http://www.w3.org/2000/svg"
-                                x-bind:class="{'border-2 border-red/50': darkMode === 'light'}"
-                                class="w-6 h-6 p-1 text-gray-700 transition rounded-full cursor-pointer bg-gray-50 hover:bg-gray-200"
-                                fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-                            </svg>
-                            <span class="sr-only">light</span>
-                        </button>
-
-                        {# dark #}
-                        <button x-on:click="darkMode = 'dark'">
-                            <svg xmlns="http://www.w3.org/2000/svg"
-                                x-bind:class="{'border-2 border-red/50': darkMode === 'dark'}"
-                                class="w-6 h-6 p-1 text-gray-100 transition bg-gray-700 rounded-full cursor-pointer dark:hover:bg-gray-600"
-                                viewBox="0 0 20 20" fill="currentColor">
-                                <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
-                            </svg>
-                            <span class="sr-only">dark</span>
-                        </button>
-
-                        {# system #}
-                        <button x-on:click="darkMode = 'system'">
-                            <svg xmlns="http://www.w3.org/2000/svg" x-cloak
-                                x-show="! window.matchMedia('(prefers-color-scheme: dark)').matches"
-                                x-bind:class="{'border-2 border-red/50': darkMode === 'system'}"
-                                class="w-6 h-6 p-1 text-gray-700 transition bg-gray-100 rounded-full cursor-pointer hover:bg-gray-200"
-                                fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                            </svg>
-
-                            <svg xmlns="http://www.w3.org/2000/svg"
-                                x-show="window.matchMedia('(prefers-color-scheme: dark)').matches"
-                                x-bind:class="{'border-2 border-red/50': darkMode === 'system'}"
-                                class="w-6 h-6 p-1 text-gray-100 transition bg-gray-700 rounded-full cursor-pointer dark:hover:bg-gray-600"
-                                x-cloak fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                            </svg>
-                            <span class="sr-only">system</span>
-                        </button>
-                    </div>  
                 </main>
 
-                <footer class="py-16 text-center text-sm text-black dark:text-white/70">
+                {{-- <footer class="py-16 text-center text-sm text-black dark:text-white/70">
                     Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})
-                </footer>
+                </footer> --}}
             </div>
         </div>
     </div>
+    @livewireScripts
 </body>
 
 </html>
