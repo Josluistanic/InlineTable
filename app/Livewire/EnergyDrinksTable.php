@@ -38,6 +38,14 @@ class EnergyDrinksTable extends Component
             optional(EnergyDrink::find($item['id']))->update($item);
         }
 
+        // El optional evita código verboso como este:
+        // if (!is_null($item)) {
+        //     $energyDrink = EnergyDrink::find($item['id']);
+        //     if (!is_null($energyDrink)) {
+        //         $energyDrink->update($item);
+        //     }
+        // }
+
         $this->editedField = null;
     }
 }
