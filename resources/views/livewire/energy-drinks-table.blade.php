@@ -48,6 +48,11 @@
                                 type="text" placeholder="Enter text"
                                 wire:model="items.{{ $index }}.description"
                                 @click.outside="$wire.editedField === '{{ $index }}.description' ? $wire.save({{ $index }}) : null">
+                            @if ($errors->has('items.' . $index . '.description'))
+                                <div class="text-red-500">
+                                    {{ $errors->first('items.' . $index . '.description') }}
+                                </div>
+                            @endif
                         @else
                             <span class="cursor-pointer" wire:click="editField({{ $index }},'description')">
                                 {{ $drink['description'] }}

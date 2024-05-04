@@ -12,6 +12,20 @@ class EnergyDrinksTable extends Component
     public $items = [];
     public $brands = [];
 
+    public function rules()
+    {
+        return [
+            'items.*.description' => 'required|string|min:3'
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'items.*.description.required' => 'The description is missing.',
+        ];
+    }
+
     public function mount()
     {
         $this->items = EnergyDrink::with('brand')->limit(5)->get()->toArray();
@@ -32,19 +46,13 @@ class EnergyDrinksTable extends Component
 
     public function save($index)
     {
+        $this->validate();
+
         $item = $this->items[$index] ?? null;
 
         if (!is_null($item)) {
             optional(EnergyDrink::find($item['id']))->update($item);
         }
-
-        // El optional evita código verboso como este:
-        // if (!is_null($item)) {
-        //     $energyDrink = EnergyDrink::find($item['id']);
-        //     if (!is_null($energyDrink)) {
-        //         $energyDrink->update($item);
-        //     }
-        // }
 
         $this->editedField = null;
     }
