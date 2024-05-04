@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Componentes de Livewire 3">
 
-    <title>Laravel</title>
+    <title>Inline Edition</title>
 
     <!-- Fonts -->
     @vite('resources/css/app.css')
@@ -77,8 +77,11 @@
                     <livewire:energy-drinks-table />
                 </main>
 
-                <footer class="py-16 text-sm text-center text-black dark:text-white/70">
-                    Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})
+                <footer
+                    class="flex items-center justify-between pt-16 text-sm text-center text-black dark:text-white/70 ">
+                    <span>
+                        Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})
+                    </span>
                 </footer>
             </div>
         </div>
