@@ -34,9 +34,7 @@ class EnergyDrinksTable extends Component
 
     public function render()
     {
-        return view('livewire.energy-drinks-table', [
-            'drinks' => $this->items,
-        ]);
+        return view('livewire.energy-drinks-table');
     }
 
     public function editField($index, $name)

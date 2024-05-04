@@ -20,7 +20,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($drinks as $index => $drink)
+            @foreach ($items as $index => $drink)
                 <tr
                     class="border-b odd:bg-red-100 odd:dark:bg-neutral-900 even:bg-orange-50 even:dark:bg-neutral-800 dark:border-gray-700 hover:bg-red-300 dark:hover:bg-neutral-700 hover:text-white">
                     <td scope="row" class="px-6 py-4 font-medium whitespace-nowrap">
