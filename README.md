@@ -39,4 +39,4 @@ El componente/etiqueta/tag mostrado en la vista de edición escucha los eventos 
 
 ### Componente
 
-En este caso estamos trabajando con TALL stack así que creamos un componente `EnergyDrinksTable` de Livewire 3 con su respectiva [vista](resources\views\livewire\energy-drinks-table.blade.php) y [clase](app/Livewire/EnergyDrinksTable.php) que utilize AlpineJS para "escuchar" el clic fuera del elemento de edición y disparar el método de guardado, para todo lo demás utilizamos Livewire
+En este caso estamos trabajando con TALL stack así que creamos un componente `EnergyDrinksTable` de Livewire 3 con su respectiva [vista](resources/views/livewire/energy-drinks-table.blade.php) y [clase](app/Livewire/EnergyDrinksTable.php) que utilize AlpineJS para "escuchar" el clic fuera del elemento de edición y disparar el método de guardado, para todo lo demás utilizamos Livewire
