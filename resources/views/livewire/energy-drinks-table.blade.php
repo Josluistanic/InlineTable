@@ -25,8 +25,7 @@
                     class="border-b odd:bg-red-100 odd:dark:bg-neutral-900 even:bg-orange-50 even:dark:bg-neutral-800 dark:border-gray-700 hover:bg-red-300 dark:hover:bg-neutral-700 hover:text-white">
                     <td scope="row" class="px-6 py-4 font-medium whitespace-nowrap">
                         @if ($editedField === $index . '.brand_id')
-                            <select x-on:edited="alert('Button Was Clicked!')" name="brand_id"
-                                wire:model="items.{{ $index }}.brand_id"
+                            <select name="brand_id" wire:model="items.{{ $index }}.brand_id"
                                 class="px-2 text-black border rounded-md appearance-none forced-colors:appearance-auto dark:bg-neutral-900 dark:text-neutral-50"
                                 @click.outside="$wire.editedField === '{{ $index }}.brand_id' ? $wire.save({{ $index }}) : null">
                                 @foreach ($brands as $brand)
