@@ -27,6 +27,8 @@ Basándome en el componente que muestra el canal de Laravel Daily en el [video d
 
 Hice un vídeo que explica la lógica general para poder ser aplicada en cualquier lenguaje y el código en un componente de [Livewire 3](https://livewire.laravel.com)
 
+[Link al video](https://youtu.be/A40zGfXKfLU)
+
 ### Lógica
 
 Tenemos un arreglo indexado que llena una tabla, cada `td` de la tabla contiene un `span` que, al hacer clic sobre él, dispara un `setter` que define una propiedad `currentEditedField` que contiene el índice del item que estamos editando concatenado al nombre de la propiedad.
